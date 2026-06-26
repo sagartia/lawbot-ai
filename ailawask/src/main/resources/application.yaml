@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: ailawask
+  ai:
+    openai:
+      api-key: ${GITHUB_KEY}
+      base-url: https://models.inference.ai.azure.com
+      chat:
+        options:
+          model: gpt-4.1-mini
+        completions-path: /chat/completions
+      embedding:
+        api-key: ${GITHUB_KEY}
+        base-url: https://models.inference.ai.azure.com
+        embeddings-path: /embeddings
+        options:
+          model: text-embedding-3-small
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        dimensions: 1536
+
+  # 資料庫連線 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lawbot
+    username: lawbot
+    password: lawbot123
+
+server:
+  port: 8080
